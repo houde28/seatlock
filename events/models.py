@@ -5,7 +5,7 @@ class Venue(models.Model):
     address = models.CharField(max_length=75)
 
     def __str__(self):
-        return ("venue name: ", self.name, "address: ", self.address)
+        return f"{self.name} at ({self.address})"
 
 class Event(models.Model):
     name = models.CharField(max_length=100)
@@ -13,7 +13,7 @@ class Event(models.Model):
     venue = models.ForeignKey(Venue,on_delete=models.CASCADE)
 
     def __str__(self):
-        return ("event name: ",self.name, "start_time: ", self.start_time, "venue name: ",self.venue)
+        return f"{self.name} at {self.venue.name}, starting at {self.start_time}"
 
 class Seat(models.Model):
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
@@ -22,7 +22,7 @@ class Seat(models.Model):
     seat_number = models.IntegerField()
 
     def __str__(self):
-        return ("Section: ",self.section,",","row: ", self.row,",","seat: ", self.seat_number)
+        return f"{self.venue.name}, Section {self.section}, Row {self.row}, Seat {self.seat_number}"
  
     class Meta:
         constraints = [
