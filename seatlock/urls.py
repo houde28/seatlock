@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from events.views import EventViewSet, SeatViewSet
-
+from bookings.views import BookingViewSet
 router = routers.DefaultRouter()
 router.register(r"events", EventViewSet)
 router.register(r"seats",SeatViewSet)
+router.register(r"bookings",BookingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/", include(router.urls)),
+
 ]

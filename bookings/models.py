@@ -10,7 +10,7 @@ class Booking(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-            fields = ['event', 'seat', 'user', 'created_at'],
-            name = 'unique_seat_per_event',
+                fields = ['event', 'seat'],
+                name = 'unique_seat_per_event',
             )
         ]
