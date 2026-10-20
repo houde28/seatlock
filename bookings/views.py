@@ -3,7 +3,6 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Booking
 from .serializers import BookingSerializer
 from django.db import IntegrityError, transaction
-import time
 
 
 class BookingViewSet(viewsets.ModelViewSet):
