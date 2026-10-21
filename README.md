@@ -36,6 +36,6 @@ I wrote a script (`scripts/race_test.py`) that sends 20 simultaneous booking req
 | | Result |
 |---|---|
 | Before fix | 1 × 201, 19 × 500 (server errors) |
-| After fix | 1 × 201, 19 × 400 (clean conflict response) |
+| After fix | 1 × 201, 19 × 409 (clean conflict response) |
 
 The fix: the save runs inside `transaction.atomic()`, and an `IntegrityError` from the database is caught and returned as a clear error instead of a crash.
