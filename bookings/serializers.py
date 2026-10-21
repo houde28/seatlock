@@ -6,6 +6,7 @@ class BookingSerializer(serializers.ModelSerializer):
         model = Booking
         fields = ['id', 'event', 'seat', 'created_at']
         read_only_fields = ['created_at']
+        validators = []
 
     def validate(self, attrs):
         if attrs["seat"].venue != attrs["event"].venue:
